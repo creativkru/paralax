@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style type="text/css">
+body {
+ height: 2000px;
+ background: navy url(conte_crayons_02.jpg) top center no-repeat fixed;
+ background-size: cover;
+}
+#bubbles1, #bubbles2 {
+ width: 100%;
+ height: 100%;
+ top: 0;
+ left: 0;
+ position: fixed;
+ z-index: -1;
+ background: url(_K_logo.png) 5% 50% no-repeat;
+}
+ 
+#bubbles2 {
+ background: url(sm_K_logo.png) 95% 90% no-repeat;
+    
+</style> 
+</head>
+<body>Hello
+    
+<div id="bubbles1"></div>
+<div id="bubbles2"></div>
+
+<script type="text/javascript">
+// Create cross browser requestAnimationFrame method:
+window.requestAnimationFrame = window.requestAnimationFrame
+ || window.mozRequestAnimationFrame
+ || window.webkitRequestAnimationFrame
+ || window.msRequestAnimationFrame
+ || function(f){setTimeout(f, 1000/60)}
+ 
+var bubble1 = document.getElementById('bubbles1');
+var bubble2 = document.getElementById('bubbles2');
+console.log(bubble1);
+console.log(bubble2);
+ 
+function parallaxbubbles(){
+ var scrolltop = window.pageYOffset // get number of pixels document has scrolled vertically
+ bubble1.style.top = -scrolltop * .2 + 'px' // move bubble1 at 20% of scroll rate
+ bubble2.style.top = -scrolltop * .5 + 'px' // move bubble2 at 50% of scroll rate
+ console.log(scrolltop);
+}
+ 
+window.addEventListener('scroll', function(){ // on page scroll
+ requestAnimationFrame(parallaxbubbles) // call parallaxbubbles() on next available screen paint
+}, false)
+</script>
+
+    </body>
+</html>
